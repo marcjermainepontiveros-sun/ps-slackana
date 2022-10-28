@@ -52,4 +52,9 @@ class Project extends Model implements HasMedia
   {
     return $this->members()->where('is_removed', 0)->count();
   }
+
+  public function messages()
+  {
+    return $this->hasMany(ProjectMessage::class);
+  }
 }
