@@ -8,6 +8,7 @@ use App\Http\Controllers\CompleteTaskController;
 use App\Http\Controllers\NudgeMemberController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectMemberController;
+use App\Http\Controllers\ProjectMessageController;
 use App\Http\Controllers\ProjectStatusController;
 use App\Http\Controllers\ProjectTeamController;
 use App\Http\Controllers\SectionController;
@@ -40,6 +41,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
   Route::apiResource('project.member', ProjectMemberController::class);
   Route::apiResource('project.section', SectionController::class);
   Route::apiResource('project.section.task', TaskController::class);
+  Route::apiResource('project.message', ProjectMessageController::class)->except(['show']);
 
   Route::group(['prefix' => 'project'], function () {
     Route::put('/{project}/project-status', [ProjectStatusController::class, 'update']);
